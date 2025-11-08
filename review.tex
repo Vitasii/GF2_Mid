@@ -1,0 +1,238 @@
+\documentclass[twocolumn]{ctexart} % 使用ctex提供的文档类
+%\usepackage[UTF8]{ctex} % 加载ctex宏包以支持中文
+
+\usepackage{geometry}
+\geometry{a4paper,left=1cm,right=1cm,top=2cm,bottom=2cm}
+\usepackage{graphicx} %插入图片的宏包
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{subfig}
+\usepackage{cite}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue]{hyperref}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\numberwithin{equation}{subsection}
+%\CTEXsetup[format={\Large\bfseries}]{section}
+\usepackage{CJKutf8}
+\usepackage{caption}
+
+
+\title{General Physics 2 Summary}
+\author{Sunflower027}
+\date{2025.11}
+
+\begin{document}
+\maketitle
+
+\section{矢量场}
+\paragraph{向量运算}
+\begin{align}
+    A\times(B\times C)&=(A\cdot C)B-(A\cdot B)C \\
+    \nabla^2f=\nabla\cdot(\nabla f)&=\sum \frac{\partial^2 f}{\partial x^2}\\
+    \nabla \times (\nabla f)&=0\\
+    \nabla\cdot(\nabla\times \vec{F})&=0 \\
+    \nabla \times (\nabla \times\vec{F})&=\nabla(\nabla\cdot\vec{F})-\nabla^2\vec{F}
+\end{align}
+
+\paragraph{无旋/无源场}
+\begin{equation}
+    \nabla\times \vec{F}=0\implies \exists \varphi \,s.t. \vec{F}=\nabla\varphi
+\end{equation}
+\begin{equation}
+    \nabla\cdot \vec{F}=0\implies \exists \vec{C} \,s.t. \vec{F}=\nabla\times\vec{C}
+\end{equation}
+
+\paragraph{积分}
+\begin{equation}
+    \int_{\partial\Omega} \vec{F}\cdot\mathrm{d}\vec{S}
+    =\int_{\Omega} \nabla\cdot\vec{F}\mathrm{d}V
+\end{equation}
+\begin{equation}
+    \int_{\partial\Sigma} \vec{F}\cdot\mathrm{d}\vec{l}
+    =\int_{\Sigma} (\nabla\times\vec{F})\cdot\mathrm{d}\vec{S}
+\end{equation}
+
+\subsection{Maxwell equations}
+\begin{align}
+    \nabla\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} \\
+    \nabla \times\vec{E} &= -\frac{\partial \vec{B}}{\partial t} \\
+    \nabla\times\vec{B} &= 
+    \frac{1}{c^2}\frac{\partial\vec{E}}{\partial t}+\frac{\vec{j}}{c^2\varepsilon_0}\\
+    \nabla\cdot \vec{B} &= 0
+\end{align}
+
+\section{静电学}
+\subsection{basics}
+
+库仑定律
+\begin{equation}
+    \vec{F}_1 = \frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{r_{12}^2}\hat{r}_{12}
+\end{equation}
+
+电场
+\begin{equation}
+    \vec{E}=\frac{1}{4\pi\varepsilon_0} \frac{q}{r^2} \hat{r}
+\end{equation}
+
+叠加原理
+
+电势
+\begin{equation}
+    \vec{E}=-\nabla\varphi
+\end{equation}
+
+Gauss定理：闭合面$S$, 有 
+\begin{equation}
+    \int_S \vec{E}\cdot\mathrm{d}\vec{S} = \frac{Q_{\text{内部}}}{\varepsilon_0}
+\end{equation}
+\begin{equation}
+    \nabla\cdot\vec{E}=\frac{\rho}{\varepsilon_0}
+\end{equation}
+
+examples. 
+均匀带电球体的场(径向)
+\begin{equation}
+    E(r)=\frac{1}{4\pi\varepsilon_0}\begin{cases}
+        \frac{Q}{r^2}, & r>R_0 \\
+        \frac{Qr}{R_0^3}, & r<R_0 
+    \end{cases}
+\end{equation}
+
+均匀带电直线
+\begin{equation}
+    E=\frac{\lambda}{2\pi\varepsilon_0 r}
+\end{equation}
+
+均匀带电平面
+\begin{equation}
+    E=\frac{\sigma}{2\varepsilon_0}
+\end{equation}
+
+
+\subsection{导体}
+
+静电平衡状态下，内部$\rho=0,\vec{E}=0$, 全导体电势相同.
+
+导体空腔：内部无电荷时，内表面无电荷
+
+
+\subsection{electric dipole}
+
+$+q,-q$电荷，间隔$d$. 定义$p=qd$, $\vec{p}$ 为$-q$指向$+q$的向量，大小为$p$. 
+以两者中点为原点，有
+\begin{equation}
+    \varphi(\vec{r})=\frac{1}{4\pi\varepsilon_0} \frac{\vec{p}\cdot\vec{r}}{r^3}
+    =-\frac{1}{4\pi\varepsilon_0}\vec{p}\cdot \nabla\left(\frac{1}{r}\right)
+\end{equation}
+\begin{equation}
+    \vec{E}(\vec{r})=\frac{1}{4\pi\varepsilon_0}\left(
+        \frac{3(\vec{p}\cdot\vec{r})\vec{r}}{r^5}-\frac{\vec{p}}{r^3}
+    \right)
+\end{equation}
+
+
+\subsection{uniqueness theorem}
+
+唯一性定理：
+闭合区域$V$, 已知电荷分布$\rho(\vec{x})$, 若在$S=\partial V$上以下两者之一成立：
+\begin{enumerate}
+    \item $\varphi|_S$ 给定 
+    \item $\frac{\partial\varphi}{\partial \hat{n}}\big|_S$ 给定
+\end{enumerate}
+则$V$内电场分布唯一确定。 
+
+证明主要利用$\nabla^2\varphi=-\frac{\rho}{\varepsilon_0}$以及恒等式
+\begin{equation}
+    \int_S u\nabla u\cdot\mathrm{d}\vec{S} = \int_V \nabla\cdot(u\nabla u)\mathrm{d}V
+    =\int_V(u\nabla^2u+|\nabla u|^2)\mathrm{d}V.
+\end{equation}
+
+唯一性定理与导体：
+闭合区域内有一些导体，若以上条件均满足且每个导体电荷量或者电势之一确定，则电场分布唯一。
+
+
+\subsection{image charge} 
+
+image charge不在希望求电场的空间中，且引入后导体边界面电势不变，
+从而可以忽视导体，认为整个空间是Uniform的。
+如此引入image charge后，导体外电场不变。
+
+导体平面：对称位置放等量反号电荷
+
+导体球：球外距离球心$d$ 处有电荷$q$, 
+则在连线上距离球心$\frac{R^2}{d}$ 处放一个$q'=-\frac{R}{d}q$的电荷，
+这两个电荷在球面上每一点产生电势为0.
+后可以根据球的电势或者带电量来在球心放置适量电荷。
+
+
+\subsection{capacitor}
+
+两极板带电$Q,-Q$, 面积$A$, 距离$d$. 
+\begin{equation}
+    E=\frac{\sigma}{\varepsilon_0}=\frac{Q}{Ad}
+\end{equation}
+\begin{equation}
+    V=Ed=\frac{Qd}{A\varepsilon_0}, \,C=\frac{Q}{V}=\frac{A\varepsilon_0}{d}
+\end{equation}
+
+
+
+\subsection{complex functions}
+
+$f:\mathbb{C}\to\mathbb{C}$, analytic(解析/可导)。
+$f(x+yi)=U(x,y)+iV(x,y)$，$U,V$均可作为电势函数。
+
+
+\subsection{examples}
+\paragraph{plasma oscillation} 
+等离子体，几乎电中性，由ions(正电)+electrons(负电)构成。
+受到扰动时，电子被推离原位，形成局部正电局部负电（正电ions质量大，受影响小）。
+产生恢复电场，如此反复形成oscillation. 
+电子数密度$n_0$, plasma frequency 
+\begin{equation}
+    \omega_p=\sqrt{\frac{q_e^2n_0}{m_e\varepsilon_0}}
+\end{equation}
+
+\paragraph{electric field of a grid}
+114514
+
+
+\subsection{静电能}
+
+两个电荷的electrostatic energy: work to bring them together (from infinity) 
+\begin{equation}
+    U=\frac{q_1q_2}{4\pi\varepsilon_0r_{12}}
+\end{equation}
+
+electrostatc energy for a charge system: 
+\begin{equation}
+    U=\frac{1}{2}\sum_i q_i\varphi_i
+\end{equation}
+$\varphi_i$: 除$q_i$外，其余charge在$q_i$处产生的电势（规定无穷远处电势为0） 
+
+连续情形： 
+\begin{equation}
+    U=\frac{1}{2}\int\varphi\mathrm{d}q
+\end{equation}
+
+同时有导体和点电荷时的静电能：（点电荷自能不考虑）
+\begin{equation}
+    U=\frac{1}{2}\left(\sum_i \varphi_iQ_i +\sum_j \varphi_j'q_j\right)
+\end{equation}
+导体电荷量$Q_i$, $\varphi_i$为该导体在此体系下具有的电势。
+点电荷$q_j$, $\varphi_j'$为$q_j$之外的带电体、电荷在此处产生的电势。
+
+电场与电能
+\begin{equation}
+    U=\frac{\varepsilon_0}{2}\int_\Omega E^2\mathrm{d}V
+\end{equation}
+
+
+\subsection{dielectric \& polarization}
+
+
+
+\section{???}
+
+
+
+
+\end{document}
