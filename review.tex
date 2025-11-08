@@ -24,13 +24,16 @@
 
 \section{矢量场}
 \paragraph{向量运算}
-\begin{align}
-    A\times(B\times C)&=(A\cdot C)B-(A\cdot B)C \\
-    \nabla^2f=\nabla\cdot(\nabla f)&=\sum \frac{\partial^2 f}{\partial x^2}\\
-    \nabla \times (\nabla f)&=0\\
-    \nabla\cdot(\nabla\times \vec{F})&=0 \\
-    \nabla \times (\nabla \times\vec{F})&=\nabla(\nabla\cdot\vec{F})-\nabla^2\vec{F}
-\end{align}
+\begin{align*}
+	&\nabla (\varphi \psi) = \psi \nabla \varphi + \varphi \nabla \psi \\&
+	\nabla \cdot (\varphi \vec{g}) = \nabla \varphi \cdot \vec{g} + \varphi \nabla \cdot \vec{g} \\&
+	\nabla \times (\varphi \vec{g}) = \nabla \varphi \times \vec{g} + \varphi \nabla \times \vec{g} \\&
+	\nabla \cdot (\vec{g} \times \vec{f}) = (\nabla \times \vec{g}) \cdot \vec{f} - \vec{g} \cdot (\nabla \times \vec{f}) \\&
+	\nabla \times (\vec{g} \times \vec{f}) = (\vec{f} \cdot \nabla) \vec{g} - (\nabla \cdot \vec{g}) \vec{f} + (\nabla \cdot \vec{f}) \vec{g} - (\vec{g} \cdot \nabla) \vec{f} \\&
+	\nabla \times (\nabla \times \vec{h}) = \nabla (\nabla \cdot \vec{h}) - \nabla^{2} \vec{h} \\&
+	\vec{c} \times (\vec{a} \times \vec{b}) = (\vec{c} \cdot \vec{b}) \vec{a} - (\vec{c} \cdot \vec{a}) \vec{b} \\&
+	\vec{a} \cdot (\vec{b} \times \vec{c}) = \vec{b} \cdot (\vec{c} \times \vec{a}) = \vec{c} \cdot (\vec{a} \times \vec{a})
+\end{align*}
 
 \paragraph{无旋/无源场}
 \begin{equation}
@@ -42,13 +45,13 @@
 
 \paragraph{积分}
 \begin{equation}
-    \int_{\partial\Omega} \vec{F}\cdot\mathrm{d}\vec{S}
+    flux=\int_{\partial\Omega} \vec{F}\cdot\mathrm{d}\vec{S}
     =\int_{\Omega} \nabla\cdot\vec{F}\mathrm{d}V
 \end{equation}
-\begin{equation}
-    \int_{\partial\Sigma} \vec{F}\cdot\mathrm{d}\vec{l}
-    =\int_{\Sigma} (\nabla\times\vec{F})\cdot\mathrm{d}\vec{S}
-\end{equation}
+\begin{align*}
+    circulation=\int_{\partial\Sigma} \vec{F}\cdot\mathrm{d}\vec{l}
+    =\int_{\Sigma} (\nabla\times\vec{F})\cdot\mathrm{d}\vec{S}\\= \int_S \sum (\frac{\partial f_y}{\partial z}-\frac{\partial f_z}{\partial y})dydz
+\end{align*}
 
 \subsection{Maxwell equations}
 \begin{align}
@@ -73,6 +76,12 @@
 \end{equation}
 
 叠加原理
+$$
+\vec{E} = \frac{1}{4\pi\varepsilon_0} \int_V \frac{\rho \, dV_2}{r^2} \hat{r}
+$$
+$$
+E_x = \frac{1}{4\pi\varepsilon_{0}} \int_V{\frac{(\Delta x)\rho\, dV_2}{r^3}}
+$$
 
 电势
 \begin{equation}
