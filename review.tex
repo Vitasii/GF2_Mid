@@ -87,7 +87,9 @@ $$
 \begin{equation}
     \vec{E}=-\nabla\varphi
 \end{equation}
-
+$$
+\Delta \phi = - \int_{\gamma} \vec E\cdot d\vec s\quad\text{path free}
+$$
 Gauss定理：闭合面$S$, 有 
 \begin{equation}
     \int_S \vec{E}\cdot\mathrm{d}\vec{S} = \frac{Q_{\text{内部}}}{\varepsilon_0}
@@ -114,12 +116,17 @@ examples.
 \begin{equation}
     E=\frac{\sigma}{2\varepsilon_0}
 \end{equation}
-
+Circle:
+$$E(x) = \frac{Q}{4\pi\varepsilon_{0}} \left(\frac{L}{{( r^{2} + L^ { 2}) } ^{\!3/2 }}\right)\,\text{（考虑分量）}$$
+Annulus:
+$$E_{x} = \frac{\sigma L}{2\varepsilon_{0}}(\frac{1}{\sqrt{{{R}_{1}}^{2}+L^ {2}}} - \frac{1}{\sqrt{{{R}_{2}}^{2} + {{L}} ^{2}}})$$
 
 \subsection{导体}
 
 静电平衡状态下，内部$\rho=0,\vec{E}=0$, 全导体电势相同.
-
+$$
+\vec n\cdot \vec E = \frac{\sigma}{\epsilon_0}\quad \vec n\times \vec E = 0
+$$
 导体空腔：内部无电荷时，内表面无电荷
 
 
@@ -145,6 +152,7 @@ $+q,-q$电荷，间隔$d$. 定义$p=qd$, $\vec{p}$ 为$-q$指向$+q$的向量，
 \begin{enumerate}
     \item $\varphi|_S$ 给定 
     \item $\frac{\partial\varphi}{\partial \hat{n}}\big|_S$ 给定
+    \item 导体所带电荷量确定
 \end{enumerate}
 则$V$内电场分布唯一确定。 
 
@@ -171,10 +179,13 @@ image charge不在希望求电场的空间中，且引入后导体边界面电�
 这两个电荷在球面上每一点产生电势为0.
 后可以根据球的电势或者带电量来在球心放置适量电荷。
 
+point charge inside a spherical cavity
+- 直接就是 $q$ and $q'$, 无论外导体的带电量，因为内壁永远只产生$-q$的电荷量
+
 
 \subsection{capacitor}
 
-两极板带电$Q,-Q$, 面积$A$, 距离$d$. 
+两极板带电$Q,-Q$, 面积$A$, 距离$d$，电荷全部集中在两个内表面（考虑两个无线平面）
 \begin{equation}
     E=\frac{\sigma}{\varepsilon_0}=\frac{Q}{Ad}
 \end{equation}
@@ -188,6 +199,10 @@ image charge不在希望求电场的空间中，且引入后导体边界面电�
 
 $f:\mathbb{C}\to\mathbb{C}$, analytic(解析/可导)。
 $f(x+yi)=U(x,y)+iV(x,y)$，$U,V$均可作为电势函数。
+取$V$为电势，$U$的差为路径上电场的flux，故$U$的等值线为电场方向
+$$
+E = -\nabla V =  - \frac{\partial V}{\partial x}-i \frac{\partial V}{\partial y}  = - \frac{\partial V}{\partial x}-i \frac{\partial U}{\partial x} = (-i)\bar f'(z)
+$$
 
 
 \subsection{examples}
@@ -200,8 +215,28 @@ $f(x+yi)=U(x,y)+iV(x,y)$，$U,V$均可作为电势函数。
     \omega_p=\sqrt{\frac{q_e^2n_0}{m_e\varepsilon_0}}
 \end{equation}
 
+\paragraph{Colloidal particles}
+
+$$\begin{aligned}
+\rho &= q_{e} \left(n_{+} - n_{-}\right) \\
+     &= q_{e} n_{0} \left(e^{-q_{e} \varphi(x) / kT} - e^{q_{e} \varphi(x) / kT} \right) \\
+     &= -2 n_{0} q_{e}^{2} \varphi(x) / kT
+\end{aligned}$$
+$$\frac{d^2\phi}{dx^2}=\frac{2n_0q_e^2}{\varepsilon_0kT}\phi(x)$$
+$$
+\phi = \frac{D\sigma}{\epsilon_0}e^{x/D},D=\sqrt{\frac{\epsilon_0kT}{2n_0q_e^2}}
+$$
+
+if $n_0 \uparrow$ then $D\downarrow$, $\phi \downarrow$ 静电（排斥）长程力变为短程力，范德华力（吸引）占据主导，产生沉淀
+
 \paragraph{electric field of a grid}
-114514
+
+足够远的地方形成均匀电场
+
+$\varphi_n = F_n(z)\cos\frac{2\pi nx}{a} \quad n=1, 2, 3, \ldots$，$\varphi = \sum \varphi_n$
+$$
+\varphi(x, z) = \underbrace{C - E_0 z}_{\text{均匀项}} + \underbrace{\sum_{n=1}^{\infty} A_n e^{-n\pi z / a} \cos\left(\frac{2n\pi x}{a}\right)}_{\text{衰减项}}
+$$
 
 
 \subsection{静电能}
@@ -233,13 +268,27 @@ $\varphi_i$: 除$q_i$外，其余charge在$q_i$处产生的电势（规定无穷
 \begin{equation}
     U=\frac{\varepsilon_0}{2}\int_\Omega E^2\mathrm{d}V
 \end{equation}
+$$
+U = U_{self}+U_{inter}
+$$
 
+自能：
+$$
+U_{ball} = \frac{3}{5}\frac{Q^2}{4\pi\epsilon_0R},U_{sphere} = \frac{Q^2}{8\pi\epsilon_0R}
+$$
 
+电容:
+$$U=\frac{1}{2}CV^2$$
 \subsection{dielectric \& polarization}
+极化率越高，介质内部电场越小，导体有无穷介电常数。注意$P,D,\sigma$有相同的量纲。
+\begin{align*}
+&\rho_{\text{pol}} = -\nabla \cdot \mathbf{P},\sigma_{pol} =  \vec P \cdot \vec n\\
+&P = (\epsilon_r-1)\epsilon_0 E, \quad D = \epsilon_r \epsilon_0 E \\
+&\nabla \cdot D = \nabla \cdot (\epsilon_r \varepsilon_0 E) = \rho_{\text{free}} \\
+&\nabla \cdot E = \frac{\rho_{\text{free}} + \rho_{\text{pol}}}{\epsilon_0}
+\\&E_{1\tau} = E_{2\tau},E_{1n}-E_{2n} = \frac{\sigma_f+\sigma_p}{\epsilon_0},D_{1n}-D_{2n} = \sigma_f
+\end{align*}
 
-
-
-\section{???}
 
 
 
