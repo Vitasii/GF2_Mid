@@ -200,11 +200,13 @@ point charge inside a spherical cavity
 $f:\mathbb{C}\to\mathbb{C}$, analytic(解析/可导)。
 $f(x+yi)=U(x,y)+iV(x,y)$，$U,V$均可作为电势函数。
 取$V$为电势，$U$的差为路径上电场的flux，故$U$的等值线为电场方向
+$$\frac{\partial U}{\partial x} = \frac{\partial V}{\partial y},\frac{\partial U}{\partial y} = -\frac{\partial V}{\partial x}$$
+取$V$为电势
 $$
 E = -\nabla V =  - \frac{\partial V}{\partial x}-i \frac{\partial V}{\partial y}  = - \frac{\partial V}{\partial x}-i \frac{\partial U}{\partial x} = (-i)\bar f'(z)
 $$
-
-
+取$U$为电势
+$$E = - \nabla U = - \frac{\partial U}{\partial x} - i \frac{\partial U}{\partial y} = - \bar f'(z)$$
 \subsection{examples}
 \paragraph{plasma oscillation} 
 等离子体，几乎电中性，由ions(正电)+electrons(负电)构成。
@@ -288,6 +290,9 @@ $$U=\frac{1}{2}CV^2$$
 &\nabla \cdot E = \frac{\rho_{\text{free}} + \rho_{\text{pol}}}{\epsilon_0}
 \\&E_{1\tau} = E_{2\tau},E_{1n}-E_{2n} = \frac{\sigma_f+\sigma_p}{\epsilon_0},D_{1n}-D_{2n} = \sigma_f
 \end{align*}
+
+注意:如果是感应电荷，$E_{1n}-E_{2n} = \frac{\sigma_f+\sigma_p}{\epsilon_0}=\frac{\sigma_p}{\epsilon_0},$这份差上下均分
+
 唯一性定理要求：
 $\nabla^2\phi = -\frac{q}{\epsilon_i}$，满足电势的边界条件，满足介质的边界条件
 
